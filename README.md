@@ -19,7 +19,7 @@ This makes it useful for monitoring system performance or integrating with other
 - Console logging of every received data point
 - Easy integration with other tools and scripts
 
-##Assumptions
+## Assumptions
 - There is only one drive on system for example C or D.
 - Implementation to get systems done only for Windows OS. Sample is given for linux also with empty method 
 
@@ -51,7 +51,8 @@ Open the solution in Visual Studio or VS Code.
 
 dotnet restore
 
+4. Change the configurations in appsettings.json
 
-4. Run the project:
+5. Run the project:
 
 dotnet run
