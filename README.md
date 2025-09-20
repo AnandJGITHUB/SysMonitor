@@ -22,6 +22,8 @@ This makes it useful for monitoring system performance or integrating with other
 ## Assumptions
 - Single system drive (C: or D:).
 - Windows OS implementation (Linux sample provided with empty method)
+- If an exception occurs while retrieving CPU, RAM, or disk usage, the data is considered invalid and will be sent in JSON as:
+  "IsDataValid": "No, {exception message}"
 
 ---
 
