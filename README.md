@@ -37,7 +37,7 @@ This makes it useful for monitoring system performance or integrating with other
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/SysMonitor.git
+git clone https://github.com/AnandJGITHUB/SysMonitor.git
 
 
 2. Navigate to the project folder:
