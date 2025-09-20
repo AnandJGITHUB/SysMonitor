@@ -20,8 +20,8 @@ This makes it useful for monitoring system performance or integrating with other
 - Easy integration with other tools and scripts
 
 ## Assumptions
-- There is only one drive on system for example C or D.
-- Implementation to get systems done only for Windows OS. Sample is given for linux also with empty method 
+- Single system drive (C: or D:).
+- Windows OS implementation (Linux sample provided with empty method)
 
 ---
 
@@ -45,14 +45,14 @@ git clone https://github.com/yourusername/SysMonitor.git
 cd SysMonitor
 
 
-Open the solution in Visual Studio or VS Code.
+3. Open the solution in Visual Studio or VS Code.
 
-3. Restore dependencies:
+4. Restore dependencies:
 
 dotnet restore
 
-4. Change the configurations in appsettings.json
+5. Update appsettings.json as needed.
 
-5. Run the project:
+6. Run the project:
 
 dotnet run
