@@ -11,18 +11,18 @@ namespace SysMonitor.Worker
     /// This is Main Place of Over program. Service keeps monitoring system details and logs it on console. 
     /// Also posts data to API end point.
     /// </summary>
-    public class Worker : BackgroundService
+    public class MonitorWorker : BackgroundService
     {
         IMonitorPlugin _monitorPlugin;//
-        private readonly ILogger<Worker> _logger;
+       
         private readonly Configurations _configClass;
         private readonly FileWritePlugin _fileWritePlugin;
 
         private readonly HandleApiRequestPlugin _handleApiRequest;
-        public Worker(IMonitorPlugin monitorPlugin, ILogger<Worker> logger, IOptions<Configurations> configClass, FileWritePlugin fileWritePlugin, HandleApiRequestPlugin handleApiRequest)
+        public MonitorWorker(IMonitorPlugin monitorPlugin, IOptions<Configurations> configClass, FileWritePlugin fileWritePlugin, HandleApiRequestPlugin handleApiRequest)
         {
             _monitorPlugin = monitorPlugin;
-            _logger = logger;
+          
             _configClass = configClass.Value;
             _fileWritePlugin = fileWritePlugin;
             _handleApiRequest = handleApiRequest;

@@ -1,5 +1,8 @@
 ﻿namespace SysMonitor.Helpers
 {
+ /// <summary>
+ // Contains Method related to conversion etc.
+ /// </summary>
     public class HelperClass
     {
         /// <summary>
@@ -7,10 +10,10 @@
         /// </summary>
         /// <param name="bytes"></param>
         /// <returns></returns>
-        public static float ConvertTOMB(long bytes)
+        public static float ConvertBytesTOMB(long bytes)
         {
 
-            return (bytes / (1024 * 124));
+            return (bytes / (1024 * 1024));
         }
 
         /// <summary>
@@ -20,7 +23,7 @@
         /// <returns></returns>
         public static float ConvertTOGB(long bytes)
         {
-            return ConvertTOMB(bytes) / 1024;// *
+            return ConvertBytesTOMB(bytes) / 1024;// *
 
         }
 

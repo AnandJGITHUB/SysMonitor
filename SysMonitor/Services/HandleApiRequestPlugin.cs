@@ -1,12 +1,6 @@
 ﻿using SysMonitor.Helpers;
-using SysMonitor.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Text.Json;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace SysMonitor.Services
 {
@@ -27,7 +21,7 @@ namespace SysMonitor.Services
         /// </summary>
         /// <param name="endPoint">Url for Posting data</param>
         /// <param name="apiResponse">Data to be posted </param>
-        public async void PostData(string endPoint, ApiResponseModel apiResponse)
+        public async void PostData<T>(string endPoint, T apiResponse)
         {
             try
             {
@@ -53,7 +47,7 @@ namespace SysMonitor.Services
 
 
             }
-            Console.ResetColor();
+          //  Console.ResetColor();
         }
     }
 }

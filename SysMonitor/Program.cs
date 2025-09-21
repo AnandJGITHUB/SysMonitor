@@ -1,4 +1,4 @@
-﻿// Program.cs (.NET 6+)
+﻿// Program.cs (.NET 8)
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -19,7 +19,7 @@ var host = Host.CreateDefaultBuilder(args)
         services.AddSingleton(new FileWritePlugin());//Sigleton DI for File write plugin
         services.AddSingleton<HandleApiRequestPlugin>();//Single DI for Handling API request
 
-        services.AddHostedService<Worker>();//Worker Service which keeps monitoring , Adding this as Hosted service
+        services.AddHostedService<MonitorWorker>();//Worker Service which keeps monitoring , Adding this as Hosted service
     })
     .Build();
 

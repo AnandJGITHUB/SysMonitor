@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SysMonitor.Model
+﻿namespace SysMonitor.Model
 {
     public class SysUsageDetails
     {
@@ -20,10 +14,7 @@ namespace SysMonitor.Model
         /// <returns></returns>
         public override string ToString()
         {
-            return
-                   $"CPU USAGE={CPU_usage:F2} % " +
-                   $"RAM USAGE={RAM_usage} MB " +
-                   $"Disk USAGE={Disk_usage} MB ";
+            return $"CPU used={CPU_usage:F2}% RAM used={RAM_usage:N0}MB Disk used={Disk_usage:N0}MB";
         }
     }
 }

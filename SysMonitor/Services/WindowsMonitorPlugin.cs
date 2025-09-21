@@ -16,9 +16,11 @@ namespace SysMonitor.Services
         private PerformanceCounter ramCounter; //For Monitoring RAM usage
         public WindowsMonitorPlugin()
         {
-            cpuCounter = new PerformanceCounter("Processor", "% Processor Time", "_Total");
+            cpuCounter =  new PerformanceCounter("Processor Information", "% Processor Utility", "_Total");
             ramCounter = new PerformanceCounter("Memory", "Available MBytes");
 
+            cpuCounter.NextValue();
+          
         }
 
         /// <summary>
@@ -31,9 +33,10 @@ namespace SysMonitor.Services
             SysUsageDetails details = new SysUsageDetails();
             try
             {
-                details.CPU_usage = GetCurrentCpuUsage();
-                details.RAM_usage = GetAvailableRamMb();
+                details.RAM_usage = GetUsedRamMb();
                 details.Disk_usage = GetDiskUsage(driveLetter);
+                details.CPU_usage = GetCurrentCpuUsage();
+
             }
             catch (Exception ex)
             {
@@ -53,14 +56,13 @@ namespace SysMonitor.Services
         /// <returns></returns>
         public float GetCurrentCpuUsage()
         {
-            float cpuUsag = 0;
+            float cpuUsage = 0;
   
             try
             {
-              
-                cpuUsag = cpuCounter.NextValue();
-                Thread.Sleep(100);//The first call to NextValue() just initializes the counter and gives you 0 or stale data (not a real measurement).
-                cpuUsag = cpuCounter.NextValue();
+
+                cpuUsage = cpuCounter.NextValue();
+               
             }
             catch (Exception ex)
             {
@@ -68,7 +70,7 @@ namespace SysMonitor.Services
                 throw ex;
             }
 
-            return cpuUsag;
+            return cpuUsage;
         }
         /// <summary>
         /// Returns Available RAM in MB
@@ -82,8 +84,8 @@ namespace SysMonitor.Services
             {
 
                 availableRam = ramCounter.NextValue();
-                Thread.Sleep(100);
-                availableRam = ramCounter.NextValue();
+                //Thread.Sleep(1000);
+                //availableRam = ramCounter.NextValue();
             }
             catch (Exception ex)
             {
@@ -107,7 +109,7 @@ namespace SysMonitor.Services
                 foreach (ManagementObject mo in mos.Get())
                 {
                     long totaLPhysicalMemory = Convert.ToInt64(mo["TotalPhysicalMemory"]);
-                    totalRam = HelperClass.ConvertTOMB(totaLPhysicalMemory);
+                    totalRam = HelperClass.ConvertBytesTOMB(totaLPhysicalMemory);
                 }
             }
             catch (Exception ex)
@@ -150,11 +152,12 @@ namespace SysMonitor.Services
                 if (drive.IsReady)
                 {
                     long totalSize = drive.TotalSize;
+                   
                     long freeSpace = drive.TotalFreeSpace;
                     long usedSpace = totalSize - freeSpace;
 
                     ;
-                    return HelperClass.ConvertTOMB(usedSpace);
+                    return HelperClass.ConvertBytesTOMB(usedSpace);
 
 
                 }
