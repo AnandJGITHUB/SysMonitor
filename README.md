@@ -15,9 +15,9 @@ This makes it useful for monitoring system performance or integrating with other
 ## Features
 
 - Monitor CPU, RAM, and Disk usage in real-time
-- REST API endpoints to submit and fetch system data
+- REST API endpoints to submit 
 - Console logging of every received data point
-- Easy integration with other tools and scripts
+
 
 ## Assumptions
 - Single system drive (C: or D:).
