@@ -1,5 +1,4 @@
 ﻿using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using SysMonitor.Helpers;
 using SysMonitor.Model;
@@ -8,7 +7,7 @@ using SysMonitor.Services;
 namespace SysMonitor.Worker
 {
     /// <summary>
-    /// This is Main Place of Over program. Service keeps monitoring system details and logs it on console. 
+    /// This is Main Place of Our program. Service keeps monitoring system details and logs it on console. 
     /// Also posts data to API end point.
     /// </summary>
     public class MonitorWorker : BackgroundService
@@ -18,12 +17,11 @@ namespace SysMonitor.Worker
         private readonly Configurations _configClass;
         private readonly FileWritePlugin _fileWritePlugin;
 
-        private readonly HandleApiRequestPlugin _handleApiRequest;
-        public MonitorWorker(IMonitorPlugin monitorPlugin, IOptions<Configurations> configClass, FileWritePlugin fileWritePlugin, HandleApiRequestPlugin handleApiRequest)
+        private readonly IAPIPlugin _handleApiRequest;
+        public MonitorWorker(IMonitorPlugin monitorPlugin, IOptions<Configurations> configClass, FileWritePlugin fileWritePlugin, IAPIPlugin handleApiRequest)
         {
             _monitorPlugin = monitorPlugin;
-          
-            _configClass = configClass.Value;
+              _configClass = configClass.Value;
             _fileWritePlugin = fileWritePlugin;
             _handleApiRequest = handleApiRequest;
         }

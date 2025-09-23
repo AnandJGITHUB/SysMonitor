@@ -15,10 +15,10 @@ var host = Host.CreateDefaultBuilder(args)
     .ConfigureServices((context, services) =>
     {
         services.Configure<Configurations>(context.Configuration.GetSection("Config"));//Add configuration Service
-        services.AddTransient<IMonitorPlugin, WindowsMonitorPlugin>();//DI for IMonitorPlugin
-        services.AddSingleton(new FileWritePlugin());//Sigleton DI for File write plugin
-        services.AddSingleton<HandleApiRequestPlugin>();//Single DI for Handling API request
-
+        services.AddSingleton<IMonitorPlugin, WindowsMonitorPlugin>();//DI for IMonitorPlugin
+        services.AddSingleton<IAPIPlugin, HandleApiRequestPlugin>();
+        services.AddSingleton(new FileWritePlugin());//Sigleton DI for File write plugin   //Sigleton DI for Handling API request
+        
         services.AddHostedService<MonitorWorker>();//Worker Service which keeps monitoring , Adding this as Hosted service
     })
     .Build();

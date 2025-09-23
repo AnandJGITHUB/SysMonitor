@@ -7,7 +7,7 @@ namespace SysMonitor.Services
     /// <summary>
     /// Plugin to Handle API request
     /// </summary>
-    public class HandleApiRequestPlugin
+    public class HandleApiRequestPlugin :IAPIPlugin
     {
         private readonly HttpClient _http; //http client to handle private because should not accessible outside of the class
 
@@ -35,7 +35,7 @@ namespace SysMonitor.Services
                 }
                 else
                 {
-                    HelperClass.ConsolePrintSuccess($"{DateTime.Now:O} Posted: {json}");
+                    HelperClass.ConsolePrintSuccess($"Posted: {json}");
                 }
 
             }
